@@ -1,5 +1,5 @@
 #!/bin/bash
-# sh ../diff.sh -a alec,harold -o -w -t 7 -b
+# sh ../diff/diff.sh -a alec,harold -o -w -t 7 -b
 # -a authors override
 # -o open relevant files
 # -w write HEAD files
