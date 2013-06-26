@@ -1,5 +1,5 @@
 #!/bin/bash
-# sh ../diff/diff.sh -a alec,harold -o -w -t 7 -b
+# sh ../diff/diff.sh -a alec -o -w -t 7 -b
 # -a authors override
 # -o open relevant files
 # -w write HEAD files
@@ -15,7 +15,8 @@ OPEN=0
 WRITE=0
 cutoffTime=0
 CUTBRANCH=0
-while getopts ':a:owt:b' opt; do
+tagOverride=0
+while getopts ':a:owt:bq:' opt; do
     case $opt in
         a)
             customAuthors=$OPTARG
@@ -31,6 +32,9 @@ while getopts ':a:owt:b' opt; do
         ;;
         b)
             CUTBRANCH=1
+        ;;
+        q)
+            tagOverride=$OPTARG
         ;;
     esac
 done
@@ -116,9 +120,12 @@ else
     exit
 fi
 
-cnf=`curl -s $url`
-tag=`echo $cnf | grep -oP '"tag":"\K([^"]+)'`
-
+if [ $tagOverride == 0 ]; then
+    cnf=`curl -s $url`
+    tag=`echo $cnf | grep -oP '"tag":"\K([^"]+)'`
+else
+    tag=$tagOverride
+fi
 
 if [ $tag == '' ]; then
     echo 'Production not checked out to tag'
