@@ -5,6 +5,7 @@
 # -w write HEAD files
 # -t cutoff time for authorship
 # -b makes new branch off of production tag
+# -q tag override
 
 validAuthors=('alec' 'brian' 'ryan' 'harold')
 WRITETO=`dirname $0`'/~/'

@@ -9,6 +9,7 @@ sh ../diff/diff.sh -a alec,harold -o -w -t 7 -b
 * -w write HEAD files
 * -t cutoff time for authorship (days ago)
 * -b makes new branch off of production tag
+* -q tag override
 
 
 With all the options set...
@@ -21,4 +22,4 @@ With all the options set...
 
 
 To Do
-- [ ] gitignored config file to override default validOffers
+- [ ] gitignored config file to override default validAuthors
