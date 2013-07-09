@@ -8,7 +8,7 @@
 # -q tag override
 
 validAuthors=('alec' 'brian' 'ryan' 'harold')
-WRITETO=`dirname $0`'/~/'
+WRITETO=`dirname $0`'/tmp/'
 WRITESEP='\n\n\n'
 
 customAuthors=
@@ -55,6 +55,8 @@ if [ $WRITE == 1 ]; then
     if [ ! -d $WRITETO ]; then
         mkdir $WRITETO
     fi
+    #not working, fix
+    #rm -fr $WRITETO'*'
     writeDiff=$WRITETO'diff.txt'
     touch $writeDiff
     echo '' > $writeDiff
@@ -160,8 +162,10 @@ for line in $diff; do
                 echo $file
             fi
             if [ $WRITE == 1 ]; then
-                headFileName=`echo $file | grep -oP '([^\/]+)$'`
-                headFileName=$WRITETO'HEAD.'$headFileName
+                headFileName=`basename $file`
+                headDirectory=`dirname $file`
+                headFileName=$WRITETO$headDirectory'/HEAD.'$headFileName
+                `mkdir -p $WRITETO$headDirectory`
                 touch $headFileName
                 cat $file > $headFileName
                 if [ $OPEN == 1 ]; then
