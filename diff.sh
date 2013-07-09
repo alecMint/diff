@@ -118,6 +118,8 @@ if [ $repo == 'git@github.com:beachmint/api' ]; then
     url='http://api-prod.beachmintdev.com/cnf.php'
 elif [ $repo == 'git@github.com:beachmint/mint-js' ]; then
     url='http://prod-mint-js.beachmintdev.com/cnf.php'
+elif [ $repo == 'git@github.com:beachmint/jewelmint-p' ]; then
+    url='http://www.jewelmint.com/cnf.php'
 else
     echo 'Unknown repo'
     exit
