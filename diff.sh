@@ -116,8 +116,14 @@ fileIsRelevant() {
 repo=`git remote -v | head -n1 | awk '{print $2}'`
 if [ $repo == 'git@github.com:beachmint/api' ]; then
     url='http://api-prod.beachmintdev.com/cnf.php'
+elif [ $repo == 'git@github.com:beachmint/api.git' ]; then
+    url='http://api-prod.beachmintdev.com/cnf.php'
 elif [ $repo == 'git@github.com:beachmint/mint-js' ]; then
     url='http://prod-mint-js.beachmintdev.com/cnf.php'
+elif [ $repo == 'git@github.com:beachmint/mint-js.git' ]; then
+    url='http://prod-mint-js.beachmintdev.com/cnf.php'
+elif [ $repo == 'git@github.com:beachmint/jewelmint-p' ]; then
+    url='http://www.jewelmint.com/cnf.php'
 elif [ $repo == 'git@github.com:beachmint/jewelmint-p.git' ]; then
     url='http://www.jewelmint.com/cnf.php'
 else
