@@ -210,6 +210,7 @@ if [ $CUTBRANCH == 1 ]; then
         nextLetter=${abc[$i]}
         branchName=`echo $tag | sed "s/$letter/$nextLetter/"`
         `git checkout $tag`
+        git submodule update
         `git checkout -b tag_$branchName`
     fi
 fi
