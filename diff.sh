@@ -199,6 +199,7 @@ if [ $WRITE == 1 ] && [ $OPEN == 1 ]; then
 		open $writeDiff
 fi
 
+`git checkout $tag`
 if [ $CUTBRANCH == 1 ]; then
 		abc=(a b c d e f g h i j k l m n o p q r s t u v w x y z)
 		#letter=`echo $tag | grep -oP '[0-9]+\K([a-z])'`
@@ -215,7 +216,6 @@ if [ $CUTBRANCH == 1 ]; then
 				done
 				nextLetter=${abc[$i]}
 				branchName=`echo $tag | sed "s/$letter/$nextLetter/"`
-				`git checkout $tag`
 				git submodule update
 				`git checkout -b tag_$branchName`
 		fi
